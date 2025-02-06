@@ -1,0 +1,28 @@
+.agenda__container{
+    margin: 0;
+}
+
+.buttons_next_prev_agenda{
+    margin:0px 0px 0px 305px;
+    display: flex;
+}
+
+.buttons_next_prev_agenda h2{
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 32px;
+    font-family: Roboto, sans-serif;
+    letter-spacing: .0125em;
+    margin: 0px 0px 0px 10px
+}
+
+.agenda__content{
+    /* position: relative; */
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.agenda__fullcalendar{
+    margin-left: 10px;
+    width: 1200px;
+}

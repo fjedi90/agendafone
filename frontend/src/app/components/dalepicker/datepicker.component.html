@@ -1,0 +1,8 @@
+<mat-card class="card__datepicker">
+    <mat-calendar
+            #mat_calendar
+            [(selected)]="selectedDate"
+            (click)="callAgendaService(selectedDate)"
+            (selectedChange)="onSelect($event)"
+    ></mat-calendar>
+</mat-card>

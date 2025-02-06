@@ -1,0 +1,30 @@
+<div class="agenda__container">
+    <div class="buttons_next_prev_agenda">
+        <button (click)="nextMonthFirstDay(selectedDate)">
+            <mat-icon>first_page</mat-icon>
+        </button>
+        <button (click)="changeMonth('prev')">
+            <mat-icon>keyboard_double_arrow_left</mat-icon>
+        </button>
+        <button (click)="prevDay()">
+            <mat-icon fontIcon="navigate_before"></mat-icon>
+        </button>
+        <button (click)="nextDay()">
+            <mat-icon fontIcon="navigate_next"></mat-icon>
+        </button>
+        <button (click)="changeMonth('next')">
+            <mat-icon>keyboard_double_arrow_right</mat-icon>
+        </button>
+        <button (click)="prevMonthFirstDay(selectedDate)">
+            <mat-icon>last_page</mat-icon>
+        </button>
+        <h2>{{ selectedDate | date: 'EEEE, d MMMM, y'}}</h2>
+    </div>
+    <div class="agenda__content">
+        <app-datepicker
+                [dataFromParentToChild]="selectedDate"
+                (childEvent)="handleDataChange($event)"
+        ></app-datepicker>
+        <app-fullcalendar class="agenda__fullcalendar"></app-fullcalendar>
+    </div>
+</div>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda person-register</title>
+    <link rel="stylesheet" href="bootstrap-5.2.0-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/person-register.css">
+    <link rel="stylesheet" href="css/index.css">
+    <script src='jquery-3.6.0-dist/jquery-3.6.0.min.js'></script>
+    <script type="text/javascript" src="bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <h2><a href=''>Agenda Online</a></h2>
+        <div>
+            <a href="index.html">Index</a> |
+            <a href="https://github.com/fjedi9">github/fjedi9</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <h4>CADASTRO</h4>
+        <form action="" id="formCadastroPerson">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="id" class="form-label">Id</label>
+                        <input type="text" class="form-control" id="id" disabled>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Nome do usuário</label>
+                        <input type="text" class="form-control" id="name" placeholder="Informe o nome" required="required">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="socialName" class="form-label">Nome Social</label>
+                        <input type="text" class="form-control" id="socialName" placeholder="Caso tenha informe o nome social aqui (Opcional)">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" class="form-control" id="cpf" placeholder="Informe o cpf" required="required">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="cns" class="form-label">CNS</label>
+                        <input type="text" class="form-control" id="cns" placeholder="Informe o cns" required="required">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="emailAddress" class="form-label">Email</label>
+                        <input type="text" class="form-control" id="emailAddress" placeholder="Informe o email" required="required">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Gender</label>
+                        <input type="text" class="form-control" id="gender" placeholder="Informe o gender" required="required">
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="mb-3">
+                        <label for="birthdate" class="form-label">Data de Nascimento</label>
+                        <input type="text" class="form-control" id="birthdate" placeholder="Informe a data de nascimento no formato (2000-01-01)" required="required">
+                    </div>
+                </div>
+            </div>
+            <div id="fieldsAddressAndPhone">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="logradouro" class="form-label">Logradouro</label>
+                            <input type="text" class="form-control" id="logradouro" placeholder="Informe o logradouro" required="required">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="numero" class="form-label">Número</label>
+                            <input type="text" class="form-control" id="numero" placeholder="Informe o número" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="complemento" class="form-label">Complemento</label>
+                            <input type="text" class="form-control" id="complemento" placeholder="Informe o complemento (Opcional)">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="bairro" class="form-label">Bairro</label>
+                            <input type="text" class="form-control" id="bairro" placeholder="Informe o bairro" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="cidade" class="form-label">Cidade</label>
+                            <input type="text" class="form-control" id="cidade" placeholder="Informe o cidade" required="required">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="cep" class="form-label">Cep</label>
+                            <input type="text" class="form-control" id="cep" placeholder="Informe o cep" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="observacao" class="form-label">Observação</label>
+                            <input type="text" class="form-control" id="observacao" placeholder="Informe observação se houver (Opcional)">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="tipo" class="form-label">Tipo de Residência</label>
+                            <input type="text" class="form-control" id="tipo" placeholder="Informe o tipo da residência">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="estado" class="form-label">UF</label>
+                            <input type="text" class="form-control" id="estado" placeholder="Informe o estado" required="required">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="pais" class="form-label">País</label>
+                            <input type="text" class="form-control" id="pais" placeholder="Informe o país" required="required">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="phoneType" class="form-label">Tipo de Telefone</label>
+                            <input type="text" class="form-control" id="phoneType" placeholder="Informe tipo de telefone, ex: celular, trabalho">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="ddd" class="form-label">DDD</label>
+                            <input type="text" class="form-control" id="ddd" placeholder="Informe o ddd">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="number" class="form-label">Telefone</label>
+                            <input type="text" class="form-control" id="number" placeholder="Informe o número do telefone">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="mb-3">
+                            <label for="description" class="form-label">Descrição sobre o telefone</label>
+                            <input type="text" class="form-control" id="description" placeholder="Informe uma descrição (Opcional)">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+        <button type="button" class="btn btn-primary" onclick="savePerson()">Salvar</button>
+<!--        <button type="button" class="btn btn-secondary" onclick="document.getElementById('formCadastroPerson').reset();">Limpar</button>-->
+        <button type="button" class="btn btn-secondary" onclick="cleanForm();">Limpar</button>
+        <button type="button" class="btn btn-warning"  data-bs-toggle="modal"
+                data-bs-target="#modalPesquisarPerson" onclick="findAll();">Pesquisar</button>
+        <button type="button" class="btn btn-danger" onclick="deletePerson();">Deletar</button>
+    </div>
+
+    <div class="modal fade" id="modalPesquisarPerson" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Pesquisa de usuário</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label for="nameBusca" class="col-form-label">Informe um nome, cpf ou cns:</label>
+                            <input type="text" class="form-control" id="nameBusca">
+                        </div>
+                        <button type="button" class="btn btn-success" onclick="buttonSearchPerson()">Buscar</button>
+                    </form>
+
+                    <div class="divTable">
+                        <table class="table" id="tabelaresultados">
+                            <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Nome</th>
+                                <th scope="col">CPF</th>
+                                <th scope="col">CNS</th>
+                                <th scope="col">EMAIL</th>
+                                <th scope="col">NASCIMENTO</th>
+                                <th scope="col">Editar</th>
+                                <th scope="col">Apagar</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id="divPageSelect">
+                        <button id="anterior" disabled>&lsaquo; Anterior</button>
+                        <span id="numeracao"></span>
+                        <button id="proximo" disabled>Próximo &rsaquo;</button>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src='js/person-register.js'></script>
+</body>
+</html>

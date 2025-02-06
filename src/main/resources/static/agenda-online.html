@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda agenda-online</title>
+    <link rel="stylesheet" href="bootstrap-5.2.0-dist/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link href='fullcalendar-5.11.3/main.css' rel='stylesheet' />
+    <link rel="stylesheet" href="css/agenda-online.css" type="text/css">
+
+    <script src='jquery-3.6.0-dist/jquery-3.6.0.min.js'></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.date.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pickadate.js/3.5.6/compressed/picker.time.js"></script>
+
+    <script type="text/javascript" src="bootstrap-5.2.0-dist/js/bootstrap.bundle.min.js"></script>
+    <script src='fullcalendar-5.11.3/main.js'></script>
+
+</head>
+<body>
+    <div class="header">
+        <h2><a href=''>Agenda Online</a></h2>
+        <div>
+            <a href="index.html">Index</a> |
+            <a href="https://github.com/fjedi9">github/fjedi9</a>
+        </div>
+    </div>
+    <div class="div-all container-fluid">
+        <div class="div-conteudo">
+            <div class="container-agendas">
+                <div class="div-datepicker">
+
+                    <span> Grade de visualização</span>
+                    <div class="viewTimeGrid">
+                        <button onclick="viewtimeGridMonth()">Mês</button>
+                        <button onclick="viewtimeGridWeek()">Semana</button>
+                        <button onclick="viewtimeGridDay()">Dia</button>
+                    </div>
+                    <span id="tipoGradeSelecionada"></span>
+
+                    <div class="buttonsPrevNext">
+                        <button id="previous_day" onclick="datePrev()">Anterior</button>
+                        <div id="dataSelecionada"></div>
+                        <button id="next_day" onclick="dateNext()">Próximo</button>
+                    </div>
+                    <div id="datePicker"></div>
+                    <button id="todayButton" onclick="diaAtual()">Hoje</button>
+                </div>
+                <div class="div-fullcalendar">
+                    <div id="msgSucess"></div>
+                    <div id='calendar'></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="modal-create-event">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Registrar Agendamento</h4>
+                    <button type="button" class="close" data-bs-dismiss="modal"><span>×</span></button>
+                </div>
+
+                <div class="modal-body" style="margin:10px;">
+
+                    <div>
+                        <div class="row">
+                            <div div class="col-sm-12 col-md-3">
+                                <label for="data" class="col-form-label">Data Selecionada:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <h5 id="dataSelecionadaModal"></h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-3">
+                            <label for="hour" class="col-form-label">Horário:</label>
+                        </div>
+                        <div class="col-sm-12 col-md-9">
+                            <span id="hour"></span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <a class="btn btn-primary" data-bs-toggle="collapse" href="#pesquisaUsuarioCollapse"
+                           role="button" aria-expanded="false" aria-controls="pesquisaUsuarioCollapse">
+                            Pesquisar usuário
+                        </a>
+                    </div>
+
+                    <div class="collapse multi-collapse" id="pesquisaUsuarioCollapse">
+                        <div class="card card-body">
+                            <div id="pesquisa">
+                                <form id="formSearch">
+                                    <div>
+                                        <input type="radio" name="colors" id="rNome" checked
+                                               onClick="nomeSelecionado()"/>Nome
+                                        <input style="margin-left:5px;" type="radio" name="colors" id="rCpf"
+                                               onClick="cpfSelecionado()"/>CPF
+                                        <input style="margin-left:5px;" type="radio" name="colors" id="rCns"
+                                               onClick="cnsSelecionado()"/>CNS
+                                    </div>
+                                    <div class="mb-3">
+                                        <label id="labelInputPesquisa" for="nameBusca"
+                                               class="col-form-label">Informe o dado de pesquisa:
+                                        </label>
+                                        <input  id="nameBusca"
+                                                type="text"
+                                                class="form-control input"
+                                                minlength="1"
+                                                oninput="mascaraCPFouCNS(this)"
+                                                required />
+                                    </div>
+                                    <button id="btnFindPerson" type="submit" class="btn btn-success">Buscar</button>
+                                    <button type="button" class="btn btn-secondary"
+                                            onclick="document.getElementById('formSearch').reset();
+                                            nomeSelecionado();">Limpar</button>
+                                </form>
+                            </div>
+                            <div style="height: 300px;overflow: scroll;">
+                                <table class="table" id="tabelaresultados">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Nome</th>
+                                        <th scope="col">CPF</th>
+                                        <th scope="col">CNS</th>
+                                        <th scope="col">ID</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form id="addEvent" method="POST" enctype="multipart/form-data">
+                        <div class="row" style="display: none">
+                            <div div class="col-sm-12 col-md-3">
+                                <label for="data" class="col-form-label">data Selecionada:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="text" class="data" name="data" id="data">
+                            </div>
+                        </div>
+                        <div class="row" style="display: none">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="start" class="col-form-label">Hora Inicial:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="text" class="start" name="start" id="start" readonly>
+                            </div>
+                        </div>
+                        <div class="row" style="display: none">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="end" class="col-form-label">Hora Final:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="text" class="end" name="end" id="end">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="title" class="col-form-label">Nome:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <span id="title"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="cpf" class="col-form-label">CPF:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <span id="cpf"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="birthdate" class="col-form-label">Nascimento:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <span id="birthdate"></span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="descricao" class="col-form-label">Observação:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <textarea class="form-control" id="descricao" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12 col-md-3">
+                                <label for="newBoardColor" class="col-form-label">Cor:</label>
+                            </div>
+                            <div class="col-sm-12 col-md-9">
+                                <input type="color" id="newBoardColor" list="presetColors"  class="form-control" required
+                                       style=" height: 50px; width: 70px;">
+                                <datalist id="presetColors">
+                                    <option>#FF1493</option>
+                                    <option>#800000</option>
+                                    <option>#000080</option>
+                                    <option>#006400</option>
+                                    <option>#89609E</option>
+                                    <option>#00FF00</option>
+                                    <option>#00AECC</option>
+                                    <option>#838C91</option>
+                                </datalist>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-success">Cadastrar</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <!-- bootstrap v4 data-dismiss , bootstrap v5 data-bs-dismiss -->
+                    <button type="button"  class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src='js/agenda-online.js'></script>
+</body>
+</html>

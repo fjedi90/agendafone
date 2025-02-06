@@ -1,0 +1,8 @@
+package com.felipeleitao.agenda_telefonica.services.exceptions;
+
+public class ObjectNotFoundException extends RuntimeException{
+
+    public ObjectNotFoundException(String message) {
+        super(message);
+    }
+}
